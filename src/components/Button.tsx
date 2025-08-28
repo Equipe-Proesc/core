@@ -1,8 +1,12 @@
 import * as React from "react";
 import { Slot } from "@radix-ui/react-slot";
 import { cva, type VariantProps } from "class-variance-authority";
-import { cn } from "@/utils/cn";
+import { cn } from "../utils/cn";
 
+
+/**
+ * buttonVariants: Utility for Tailwind-based button variants and sizes.
+ */
 const buttonVariants = cva(
   "inline-flex dark:bg-gray-700 dark:hover:bg-gray-800 items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0",
   {
@@ -29,17 +33,32 @@ const buttonVariants = cva(
   }
 );
 
+
+/**
+ * ButtonProps: Props for the Button component.
+ * @prop asChild - If true, renders as Slot (for custom wrappers).
+ * @prop variant - Visual style variant.
+ * @prop size - Button size.
+ */
 export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement>, VariantProps<typeof buttonVariants> {
+  /**
+   * If true, renders as Slot (for custom wrappers like links).
+   */
   asChild?: boolean;
 }
 
+
+/**
+ * Button: A reusable, accessible button component with variants and sizes.
+ */
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   ({ className, variant, size, asChild = false, ...props }, ref) => {
-    const Comp = asChild ? Slot : "button";
+    const Comp: any = asChild ? Slot : "button";
     return (
       <Comp
         className={cn(buttonVariants({ variant, size, className }))}
         ref={ref}
+        aria-label={props['aria-label'] || (typeof props.children === 'string' ? props.children : undefined)}
         {...props}
       />
     );
