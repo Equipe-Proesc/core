@@ -1,11 +1,16 @@
 {
   "name": "@proesc/core",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "Core components and utilities for Proesc projects.",
   "type": "module",
   "main": "dist/proesc-core.cjs.js",
   "module": "dist/proesc-core.es.js",
   "types": "dist/types/index.d.ts",
+  "typesVersions": {
+    "*": {
+      "*": ["dist/types/*"]
+    }
+  },
   "files": [
     "dist",
     "src",
