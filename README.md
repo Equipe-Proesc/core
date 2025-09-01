@@ -7,13 +7,13 @@ This is the core npm package for shared components or utilities.
 Install via npm (after publishing):
 
 ```
-npm install @your-scope/core
+npm i @proesc/core
 ```
 
 Import in your project:
 
 ```js
-const core = require('@your-scope/core');
+const core = require('@proesc/core');
 console.log(core.hello()); // "Hello from core!"
 ```
 
