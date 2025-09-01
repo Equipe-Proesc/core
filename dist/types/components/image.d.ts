@@ -2,8 +2,8 @@ import { VariantProps } from 'class-variance-authority';
 import * as React from "react";
 declare const imageVariants: (props?: ({
     variant?: "default" | "circle" | "square" | "rounded" | null | undefined;
-    size?: "sm" | "lg" | "auto" | "xs" | "md" | "xl" | "2xl" | "full" | null | undefined;
-    aspect?: "video" | "auto" | "square" | "portrait" | "landscape" | null | undefined;
+    size?: "sm" | "lg" | "xs" | "md" | "xl" | "2xl" | "auto" | "full" | null | undefined;
+    aspect?: "video" | "square" | "auto" | "portrait" | "landscape" | null | undefined;
 } & import('class-variance-authority/dist/types').ClassProp) | undefined) => string;
 export interface ImageProps extends Omit<React.ImgHTMLAttributes<HTMLImageElement>, 'size'>, VariantProps<typeof imageVariants> {
     src: string;

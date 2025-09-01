@@ -115,11 +115,15 @@ export const NativeSelect = forwardRef<HTMLDivElement, NativeSelectProps>(
         const mergedRef = useCallback(
             (node: HTMLDivElement) => {
                 rootRef.current = node;
-                if (typeof ref === "function") ref(node);
-                else if (ref) (ref as React.RefObject<HTMLDivElement>).current = node;
+                if (typeof ref === "function") {
+                    ref(node);
+                } else if (ref) {
+                    (ref as React.MutableRefObject<HTMLDivElement | null>).current = node;
+                }
             },
             [ref]
         );
+
 
         const filteredOptions = useMemo(() => {
             if (!searchable || !searchTerm.trim()) return options;
