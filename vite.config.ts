@@ -1,5 +1,5 @@
 import { defineConfig } from "vite";
-// @ts-expect-error
+// @ts-ignore
 import react from "@vitejs/plugin-react";
 import dts from "vite-plugin-dts";
 import { fileURLToPath } from "url";
@@ -13,8 +13,8 @@ export default defineConfig({
         dts({
             entryRoot: "src",
             outDir: "dist/types",
+            insertTypesEntry: true,
         })
-
     ],
     resolve: {
         alias: {
@@ -22,6 +22,7 @@ export default defineConfig({
         }
     },
     build: {
+        emptyOutDir: false,
         lib: {
             entry: resolve(__dirname, "src/index.ts"),
             name: "ProescCore",
@@ -29,7 +30,6 @@ export default defineConfig({
             formats: ["es", "cjs"]
         },
         rollupOptions: {
-            // Essas libs não serão incluídas no bundle
             external: [
                 "react",
                 "react-dom",

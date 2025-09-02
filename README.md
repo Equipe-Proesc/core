@@ -13,8 +13,8 @@ npm i @proesc/core
 Import in your project:
 
 ```js
-const core = require('@proesc/core');
-console.log(core.hello()); // "Hello from core!"
+import '@proesc/core/styles.css'; //import css default
+import { Button } from "@proesc/core";
 ```
 
 ## Development

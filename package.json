@@ -1,26 +1,27 @@
 {
   "name": "@proesc/core",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "description": "Core components and utilities for Proesc projects.",
   "type": "module",
   "main": "dist/proesc-core.cjs.js",
   "module": "dist/proesc-core.es.js",
   "types": "dist/types/index.d.ts",
-  "typesVersions": {
-    "*": {
-      "*": ["dist/types/*"]
-    }
-  },
   "files": [
     "dist",
-    "src",
     "tailwind.preset.js"
   ],
   "exports": {
     ".": {
-      "import": "./dist/proesc-core.es.js",
-      "require": "./dist/proesc-core.cjs.js"
+      "import": {
+        "types": "./dist/types/index.d.ts",
+        "default": "./dist/proesc-core.es.js"
+      },
+      "require": {
+        "types": "./dist/types/index.d.ts",
+        "default": "./dist/proesc-core.cjs.js"
+      }
     },
+    "./styles.css": "./dist/styles.css",
     "./tailwind": "./tailwind.preset.js"
   },
   "repository": {
@@ -31,8 +32,9 @@
   "license": "MIT",
   "scripts": {
     "dev": "vite",
-    "build:css": "tailwindcss -i ./src/styles/index.css -o ./dist/core.css --minify",
-    "build": "npm run build:css && vite build",
+    "build:lib": "vite build",
+    "build:css": "tailwindcss -i ./src/styles/index.css -o ./dist/styles.css --minify",
+    "build": "npm run build:css && npm run build:lib",
     "test": "echo 'Add your test script here'"
   },
   "peerDependencies": {

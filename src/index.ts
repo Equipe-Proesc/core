@@ -1,4 +1,4 @@
-export * from './components/Button';
+export { Button } from './components/Button';
 export * from './components/accordion';
 export * from './components/native-select';
 export * from './components/image';

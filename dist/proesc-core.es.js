@@ -8289,7 +8289,6 @@ export {
   fu as ScrollArea,
   za as ScrollBar,
   Yl as badgeVariants,
-  Nc as buttonVariants,
   M as cn,
   Pl as imageVariants
 };
